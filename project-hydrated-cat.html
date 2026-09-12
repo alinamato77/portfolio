@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hydrated Cat — Alina Xie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styleguide.css">
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">Other</a></li>
+    <li><a href="index.html#moments">Moments</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="resume.html">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- CLEAN LAYOUT HEADER -->
+<div class="clean-header" id="hero" data-reveal>
+  <a href="index.html#work" class="back-link">← Back to Work</a>
+  <div class="clean-header-grid">
+    <div class="clean-header-text">
+      <h1 class="proj-title">Hydra<em>ted</em> Cat.</h1>
+      <p class="clean-subtitle">A habit-forming hydration companion designed to make water tracking engaging.</p>
+    </div>
+    <div class="clean-header-mockups" id="mockupWrap">
+      <img src="images/hydrated-cat-hero-1.png" alt="Hydrated Cat onboarding screen" class="mockup mockup-back" />
+      <img src="images/hydrated-cat-hero-2.png" alt="Hydrated Cat hydration reminder screen" class="mockup mockup-front" />
+      <div class="hydration-card" id="hydrationCard">
+        <svg class="hydration-ring" viewBox="0 0 56 56">
+          <circle class="bg" cx="28" cy="28" r="22" />
+          <circle class="fg" cx="28" cy="28" r="22" stroke-dasharray="138.2" stroke-dashoffset="138.2" id="hydrationRingFg" />
+        </svg>
+        <div class="hydration-card-text">
+          <span class="hc-label">Daily Goal</span>
+          <span class="hc-value">6 / 9 cups</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- META ROW -->
+<div class="clean-meta-row" data-reveal>
+  <div class="clean-meta-item" data-reveal-item>
+    <span class="meta-label">Role</span>
+    <span class="clean-meta-val">Product Designer</span>
+  </div>
+  <div class="clean-meta-item" data-reveal-item>
+    <span class="meta-label">Project Type</span>
+    <span class="clean-meta-val">0 → 1, Personal Project</span>
+  </div>
+  <div class="clean-meta-item" data-reveal-item>
+    <span class="meta-label">Deliverables</span>
+    <span class="clean-meta-val">UX Research, UI, Prototyping</span>
+  </div>
+  <div class="clean-meta-item" data-reveal-item>
+    <span class="meta-label">Platform</span>
+    <span class="clean-meta-val">iOS, Android</span>
+  </div>
+</div>
+
+<!-- CASE STUDY BODY (side nav is scoped/sticky to this wrapper only) -->
+<div class="case-study-body">
+<nav class="side-nav" id="sideNav">
+  <a href="#problem" class="side-nav-link" data-target="problem"><span class="side-nav-dot"></span><span class="side-nav-label">Problem</span></a>
+  <a href="#testing" class="side-nav-link" data-target="testing"><span class="side-nav-dot"></span><span class="side-nav-label">Testing</span></a>
+  <a href="#prototype" class="side-nav-link" data-target="prototype"><span class="side-nav-dot"></span><span class="side-nav-label">Prototype</span></a>
+  <a href="#outcomes" class="side-nav-link" data-target="outcomes"><span class="side-nav-dot"></span><span class="side-nav-label">Outcomes</span></a>
+  <a href="#next" class="side-nav-link" data-target="next"><span class="side-nav-dot"></span><span class="side-nav-label">Next Steps</span></a>
+</nav>
+
+<!-- BODY COPY -->
+<div class="clean-copy" id="problem" data-reveal>
+    <h2 class="clean-block-title">Problems &amp; Goals</h2>
+  <p>Most hydration apps fail for the same reason: logging water feels like a chore, and generic reminders get ignored until people give up on them entirely. Hydrated Cat set out to fix that by pairing a lightweight, one-tap tracking flow with a character-driven companion that reacts to a user's habits in real time. Turning a purely functional task into something people actually want to check in on.</p>
+    <h2 class="clean-block-title">Role &amp; Responsibility</h2>
+  <p>I led the project end to end, from early user interviews through two rounds of usability testing to a finished, animated prototype. Along the way, three insights reshaped the product: reducing the friction of logging a drink, giving the Cat companion emotional feedback so hydration felt rewarding rather than transactional, and rebuilding onboarding around transparency once testers started hesitating to share personal data.</p>
+</div>
+
+<!-- USER TESTING -->
+<div class="clean-block persona-block" id="testing" data-reveal>
+  <h2 class="clean-block-title">User Testing</h2>
+  <p class="clean-block-desc">Two personas emerged from interviews and usability testing — click the card to switch between them.</p>
+  <div class="persona-grid">
+    <div class="persona-card-col">
+      <button class="persona-card-stack" id="personaToggle" aria-label="Switch to the other persona">
+        <div class="persona-card-back">
+          <div class="persona-avatar-mini" id="personaAvatarBack">
+            <img id="personaAvatarBackImg" alt="" />
+          </div>
+        </div>
+        <div class="persona-card-front">
+          <div class="persona-avatar" id="personaAvatar">
+            <img id="personaAvatarImg" alt="" />
+          </div>
+          <p class="persona-name" id="personaName"></p>
+          <div class="persona-meta">
+            <p><span class="meta-label">Age</span><span id="personaAge"></span></p>
+            <p><span class="meta-label">Job</span><span id="personaJob"></span></p>
+            <p><span class="meta-label">Location</span><span id="personaLocation"></span></p>
+          </div>
+        </div>
+      </button>
+      <span class="persona-switch-hint">↻ Click the card to switch persona</span>
+    </div>
+
+    <div class="persona-panels" id="personaPanels">
+      <div class="persona-panel" data-reveal-item>
+        <h3>Core Needs</h3>
+        <ul id="personaCoreNeeds"></ul>
+      </div>
+      <div class="persona-panel" data-reveal-item>
+        <h3>Pain Point</h3>
+        <ul id="personaPainPoint"></ul>
+      </div>
+      <div class="persona-panel" data-reveal-item>
+        <h3>Behavior</h3>
+        <ul id="personaBehavior"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOTYPE -->
+<div class="clean-gallery" id="prototype" data-reveal>
+  <h2 class="clean-block-title">Prototype</h2>
+  <div class="clean-gallery-stage" id="galleryStage">
+    <video src="images/videos/hydrated-cat-prototype.mp4" poster="images/hydrated-cat-prototype-poster.jpg" controls autoplay muted loop playsinline preload="metadata" class="active"></video>
+    <img src="images/hydrated-cat-screen-1.png" alt="Onboarding, water goal setup" />
+    <img src="images/hydrated-cat-screen-3.png" alt="Notification interval settings" />
+    <img src="images/hydrated-cat-screen-4.png" alt="Monthly progress tracker" />
+  </div>
+  <div class="clean-gallery-caption" id="galleryCaption">
+    <h3>Prototype</h3>
+    <p>Onboarding through daily logging in motion.</p>
+  </div>
+  <div class="clean-gallery-thumbs" id="galleryThumbs">
+    <button class="clean-gallery-thumb active" data-title="Select your drink" data-desc="Onboarding through daily logging in motion.">
+      <img src="images/hydrated-cat-prototype-poster.jpg" alt="Prototype thumbnail" />
+    </button>
+    <button class="clean-gallery-thumb" data-title="Set the goal" data-desc="A quick 3-step flow captures activity level and recommends a daily water goal — no manual math required.">
+      <img src="images/hydrated-cat-screen-1.png" alt="Biological setup thumbnail" />
+    </button>
+    <button class="clean-gallery-thumb" data-title="Tune the reminders" data-desc="Users control notification frequency and active hours, so nudges feel considerate, not naggy.">
+      <img src="images/hydrated-cat-screen-3.png" alt="Reminders thumbnail" />
+    </button>
+    <button class="clean-gallery-thumb" data-title="See the streak" data-desc="A monthly calendar view turns consistency into a visible, rewarding pattern, with puzzle pieces unlocked for hitting goals.">
+      <img src="images/hydrated-cat-screen-4.png" alt="Monthly logging prize thumbnail" />
+    </button>
+  </div>
+</div>
+
+<!-- KEY OUTCOMES -->
+<div class="clean-block" id="outcomes" data-reveal>
+  <h2 class="clean-block-title">Key Outcomes</h2>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead">Cut logging to a single tap</p>
+    <p class="clean-item-desc">on the home screen, after testing showed high interaction costs were driving users away.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead">Gave the Cat companion emotional feedback</p>
+    <p class="clean-item-desc">"smiling on hydration" after users said the static version felt flat and transactional.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead">Rewrote onboarding around transparency</p>
+    <p class="clean-item-desc">explaining upfront why biological data is needed, after testers hesitated to share it.</p>
+  </div>
+</div>
+
+<!-- NEXT STEP -->
+<div class="clean-block" id="next" data-reveal>
+  <h2 class="clean-block-title">Next Step</h2>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead clean-item-lead--ink">1. Beverage analysis</p>
+    <p class="clean-item-desc">Track caffeine, sugar and alcohol alongside water for a fuller picture of health, not just hydration.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead clean-item-lead--ink">2. Social accountability</p>
+    <p class="clean-item-desc">Add hydration buddies and leaderboards to turn motivation into positive social pressure.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead clean-item-lead--ink">3. Expanded rewards</p>
+    <p class="clean-item-desc">Unlockable accessories and a richer incentive system to keep streaks interesting long-term.</p>
+  </div>
+</div>
+</div><!-- /.case-study-body -->
+
+<!-- PROTOTYPE CTA -->
+<div class="cta-section" id="cta" data-reveal>
+  <p class="cta-text">See it in <em>action.</em></p>
+  <a class="cta-btn" href="https://www.figma.com/proto/6rPmnjkzL2LmhlWoAtVRyu/prototype-v2--Copy-?node-id=2016-13016&viewport=129%2C37%2C0.21&t=1weuv7Y0zixsakAw-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2016%3A13016&show-proto-sidebar=1&page-id=2016%3A12268" target="_blank" rel="noopener">View Prototype ↗</a>
+</div>
+
+<!-- PROJECT NAV -->
+<div class="project-nav">
+  <a href="index.html#work" class="proj-nav-link">
+    <span>← All Projects</span>
+  </a>
+  <a href="project-flux.html" class="proj-nav-link right">
+    <span>Next Project →</span>
+    <span class="nav-proj-title">FLUX</span>
+  </a>
+</div>
+
+<footer>
+  <p>© 2026 Alina Xie</p>
+  <p>Product Designer in Bay Area</p>
+</footer>
+
+<script src="js/project-hydrated-cat.js"></script>
+</body>
+</html>

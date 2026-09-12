@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alina Xie — UI/UX Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styleguide.css">
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">Other</a></li>
+    <li><a href="#moments">Moments</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="resume.html">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="v2-hero" id="home">
+  <div class="v2-sky" id="v2Sky">
+    <div class="v2-constellation-layer" id="v2ConstellationLayer"></div>
+  </div>
+
+  <div class="v2-content">
+    <span class="v2-badge">product designer / based in San Francisco</span>
+
+    <div class="v2-card">
+      <span class="v2-dot tl"></span>
+      <span class="v2-dot ml"></span>
+      <span class="v2-dot bl"></span>
+      <span class="v2-dot tr"></span>
+      <span class="v2-dot mr"></span>
+      <span class="v2-dot br"></span>
+
+      <div class="v2-card-top">
+        <h1 class="v2-headline">Hi! I'm <a href="info.html" class="name-accent">Alina Xie</a>. Good design makes things <span class="v2-rotator" id="heroRotator"></span><span class="v2-rotator-cursor">|</span>.</h1>
+        <video class="v2-character" autoplay loop muted playsinline aria-label="Animated pixel-art character illustration">
+          <source src="images/character/character-animation.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <button class="v2-terminal-toggle" id="v2TerminalToggle" aria-label="Open terminal window" aria-pressed="false">&gt;<span class="v2-caret">_</span></button>
+    </div>
+
+    <a href="#work" class="v2-scroll-cue">View Work ↓</a>
+  </div>
+
+  <div class="v2-terminal-backdrop" id="v2TerminalBackdrop"></div>
+  <div class="v2-terminal" id="v2Terminal">
+    <div class="v2-terminal-bar">
+      <span class="v2-tdot red"></span>
+      <span class="v2-tdot yellow"></span>
+      <span class="v2-tdot green"></span>
+      <span class="v2-terminal-title">Documents — -bash — 80x24</span>
+    </div>
+    <div class="v2-terminal-body" id="v2TerminalBody"></div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <p class="section-label">Selected Work</p>
+  <div class="projects">
+
+    <!-- 01 Hydrated Cat -->
+    <div class="project-item" data-observe>
+      <span class="project-badge">Project 01</span>
+      <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+      <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+      <div class="project-info">
+        <h2 class="project-title">Hydra<em>ted</em> Cat</h2>
+        <div class="project-tags">
+          <span class="tag">Product Design</span>
+          <span class="tag">Health &amp; Wellness</span>
+          <span class="tag">Illustration &amp; Animation</span>
+          <span class="tag">Personal Project</span>
+        </div>
+        <p class="project-desc">A gamification hydration tracking app featuring a friendly cat companion that makes drinking water engaging. </p>
+        <div class="project-actions">
+          <a class="project-case" href="project-hydrated-cat.html">View Case Study →</a>
+          <a class="project-link" href="https://www.figma.com/proto/6rPmnjkzL2LmhlWoAtVRyu/prototype-v2--Copy-?node-id=3-3991&viewport=21%2C282%2C0.1&t=goUUN6p41hgrRSGd-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=3%3A3991&show-proto-sidebar=1&page-id=0%3A1" target="_blank" rel="noopener">Prototype ↗</a>
+        </div>
+      </div>
+      <div class="project-browser">
+        <div class="project-browser-bar">
+          <span class="v2-tdot red"></span><span class="v2-tdot yellow"></span><span class="v2-tdot green"></span>
+          <span class="project-browser-url">alinaxie.design/hydrated-cat</span>
+        </div>
+        <div class="project-thumb">
+          <img src="images/hydrated-cat-thumb.jpg" alt="Hydrated Cat App" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 FLUX -->
+    <div class="project-item" data-observe>
+      <span class="project-badge">Project 02</span>
+      <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+      <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+      <div class="project-info">
+        <h2 class="project-title">FL<em>U</em>X</h2>
+        <div class="project-tags">
+          <span class="tag">AI Product Design</span>
+          <span class="tag">Figma Make</span>
+          <span class="tag">Hardware &amp; Software Design</span>
+          <span class="tag">Group Project</span>
+          <span class="tag">FigmaBuild 2026</span>
+        </div>
+        <p class="project-desc">A tracking application exploring human chronoception, helping users understand and manage their flow states through a companion wearable device.</p>
+        <div class="project-actions">
+          <a class="project-case" href="project-flux.html">View Case Study →</a>
+          <a class="project-link" href="https://www.figma.com/make/cokQrYV8cw9ipU6a2Bwdkp/FLUX?fullscreen=1&t=0nIg2CDEoVY6D0Rw-1&code-node-id=0-9" target="_blank" rel="noopener">Prototype ↗</a>
+        </div>
+      </div>
+      <div class="project-browser">
+        <div class="project-browser-bar">
+          <span class="v2-tdot red"></span><span class="v2-tdot yellow"></span><span class="v2-tdot green"></span>
+          <span class="project-browser-url">alinaxie.design/flux</span>
+        </div>
+        <div class="project-thumb">
+          <img src="images/fluxpresentation.jpg" alt="FLUX App Design" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MORE WORK -->
+<section id="about">
+  <p class="section-label">More</p>
+  <h2 class="about-heading">My Other <em>Works</em></h2>
+  <p class="more-work-sub">Smaller explorations and side projects — more case studies coming soon.</p>
+
+  <div class="more-work-carousel">
+    <div class="more-work-track" id="moreWorkTrack">
+      <div class="more-work-slide">
+        <span class="project-badge project-badge--top">Brand Design-Restaurant</span>
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="project-browser">
+          <div class="project-browser-bar">
+            <span class="v2-tdot red"></span><span class="v2-tdot yellow"></span><span class="v2-tdot green"></span>
+            <span class="project-browser-url">figma.com/thepublicizakaya</span>
+          </div>
+          <button class="more-work-preview-trigger" aria-label="Open The Public Izakaya brand design project" data-title="The Public Izakaya — Menu & Website" data-desc="Full brand identity for a Japanese izakaya restaurant, carried through to a designed menu and website — presented as one complete case study." data-img="images/izakaya-menu-website-preview.jpg" data-link1-href="projects/brand-design.php" data-link1-label="View Case Study →" data-link2-href="images/the-public-izakaya-presentation.pdf" data-link2-label="View Presentation ↗" data-video1-src="images/videos/brand-video.mp4" data-video1-poster="images/brand-video-poster.jpg" data-video1-label="Brand" data-video2-src="images/videos/menu-video.mp4" data-video2-poster="images/menu-video-poster.jpg" data-video2-label="Menu" data-proto-label="View Prototype" data-proto1-href="https://www.figma.com/proto/bmnJoVzsHYpat42B5F2Sgw/menu-and-website?node-id=134-341&viewport=313%2C244%2C0.2&t=itKRdasteR5itKLi-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=134%3A341&page-id=134%3A333" data-proto1-label="Menu ↗" data-proto2-href="https://www.figma.com/proto/bmnJoVzsHYpat42B5F2Sgw/menu-and-website?node-id=5-181&viewport=225%2C123%2C0.11&t=l8H6HVfUmU7j0y3M-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=5%3A181&page-id=5%3A166" data-proto2-label="Website ↗">
+            <img class="more-work-preview-img" src="images/brand-homepage.png" alt="The Public Izakaya menu and website mockup preview" />
+            <span class="more-work-expand-icon" aria-hidden="true">⤢</span>
+          </button>
+        </div>
+      </div>
+            <div class="more-work-slide">
+        <span class="project-badge project-badge--top">Motion Graphic — Book Promotion</span>
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="project-browser" id="moreWorkBrowser">
+          <div class="project-browser-bar">
+            <span class="v2-tdot red"></span><span class="v2-tdot yellow"></span><span class="v2-tdot green"></span>
+            <span class="project-browser-url">alinaxie.design/motion-reel</span>
+          </div>
+          <button class="more-work-video-trigger" id="moreWorkVideoTrigger" aria-label="Open motion graphic video">
+            <video class="more-work-video" id="moreWorkVideo" src="images/flux-motion-reel.mp4" poster="images/flux-motion-poster.jpg" preload="metadata" muted playsinline aria-label="Motion graphic final project, made in Adobe After Effects"></video>
+            <span class="more-work-play-icon" aria-hidden="true">▶</span>
+          </button>
+        </div>
+      </div>
+      <div class="more-work-slide">
+        <span class="project-badge project-badge--top">Web Design - Mass Media History</span>
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="project-browser" id="timelineBrowser">
+          <div class="project-browser-bar">
+            <span class="v2-tdot red"></span><span class="v2-tdot yellow"></span><span class="v2-tdot green"></span>
+            <span class="project-browser-url">figma.com/massmediatimeline</span>
+          </div>
+          <button class="more-work-video-trigger" id="timelineVideoTrigger" aria-label="Open Timeline website walkthrough video">
+            <video class="more-work-video" id="timelineVideo" src="images/videos/timeline.mp4" poster="images/timeline-video-poster.jpg" preload="metadata" muted playsinline aria-label="Timeline — The Evolution of Mass Media, website walkthrough"></video>
+            <span class="more-work-play-icon" aria-hidden="true">▶</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="more-work-slide">
+        <span class="project-badge project-badge--top">Coding-All Stock E-commercial Website</span>
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="project-browser" id="backEndBrowser">
+          <div class="project-browser-bar">
+            <span class="v2-tdot red"></span><span class="v2-tdot yellow"></span><span class="v2-tdot green"></span>
+            <span class="project-browser-url">alinaxdesign.com/pawland</span>
+          </div>
+          <button class="more-work-video-trigger" id="backEndVideoTrigger" aria-label="Open PawLand back-end walkthrough video">
+            <video class="more-work-video" id="backEndVideo" src="images/videos/back-end-video.mp4" poster="images/back-end-video-poster.jpg" preload="metadata" muted playsinline aria-label="PawLand full-stack e-commerce walkthrough"></video>
+            <span class="more-work-play-icon" aria-hidden="true">▶</span>
+          </button>
+        </div>
+      </div>
+      <div class="more-work-slide">
+        <span class="project-badge project-badge--top">Web Design</span>
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="project-browser">
+          <div class="project-browser-bar">
+            <span class="v2-tdot red"></span><span class="v2-tdot yellow"></span><span class="v2-tdot green"></span>
+            <span class="project-browser-url">alinaxdesign.com/asianartmuseum</span>
+          </div>
+          <button class="more-work-preview-trigger" aria-label="Open Asian Art Museum project" data-title="Asian Art Museum" data-desc="A fully realized museum website designed for the Asian Art Museum, featuring exhibition listings, artist profiles, and a clean editorial visual language with teal typography as a signature element." data-img="images/home.png" data-link1-href="https://alinaxdesign.com/aau/ixd601/final/finalproject/" data-link1-label="Live Site ↗">
+            <img class="more-work-preview-img" src="images/home.png" alt="Asian Art Museum Website" />
+            <span class="more-work-expand-icon" aria-hidden="true">⤢</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="more-work-dots" id="moreWorkDots">
+      <button class="more-work-dot" aria-label="Go to slide 1"></button>
+      <button class="more-work-dot" aria-label="Go to slide 2"></button>
+      <button class="more-work-dot" aria-label="Go to slide 3"></button>
+      <button class="more-work-dot" aria-label="Go to slide 4"></button>
+      <button class="more-work-dot" aria-label="Go to slide 5"></button>
+    </div>
+  </div>
+</section>
+
+<!-- MOMENTS MARQUEE -->
+<section class="info-marquee-section" id="moments">
+  <p class="section-label">Moments</p>
+  <div class="info-marquee">
+    <div class="info-marquee-track">
+      <div class="info-card">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><img src="images/info/info-1.png" alt="Painting on an easel, palette in hand" /></div>
+      </div>
+      <div class="info-card">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><img src="images/info/info-2.png" alt="Visiting an art gallery exhibition" /></div>
+      </div>
+      <div class="info-card">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><img src="images/info/info-3.png" alt="Resting at the studio with a plush cushion" /></div>
+      </div>
+      <div class="info-card">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><img src="images/info/info-4.png" alt="Close-up of tufted textile craft work" /></div>
+      </div>
+      <div class="info-card">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><video src="images/info/info-5.mp4" autoplay loop muted playsinline aria-label="Video moment 1"></video></div>
+      </div>
+      <div class="info-card">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><video src="images/info/info-6.mp4" autoplay loop muted playsinline aria-label="Video moment 2"></video></div>
+      </div>
+      <div class="info-card">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><video src="images/info/info-7.mp4" autoplay loop muted playsinline aria-label="Video moment 3"></video></div>
+      </div>
+      <div class="info-card">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><video src="images/info/info-8.mp4" autoplay loop muted playsinline aria-label="Video moment 4"></video></div>
+      </div>
+      <!-- duplicated for seamless loop -->
+      <div class="info-card" aria-hidden="true">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><img src="images/info/info-1.png" alt="" /></div>
+      </div>
+      <div class="info-card" aria-hidden="true">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><img src="images/info/info-2.png" alt="" /></div>
+      </div>
+      <div class="info-card" aria-hidden="true">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><img src="images/info/info-3.png" alt="" /></div>
+      </div>
+      <div class="info-card" aria-hidden="true">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><img src="images/info/info-4.png" alt="" /></div>
+      </div>
+      <div class="info-card" aria-hidden="true">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><video src="images/info/info-5.mp4" autoplay loop muted playsinline></video></div>
+      </div>
+      <div class="info-card" aria-hidden="true">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><video src="images/info/info-6.mp4" autoplay loop muted playsinline></video></div>
+      </div>
+      <div class="info-card" aria-hidden="true">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><video src="images/info/info-7.mp4" autoplay loop muted playsinline></video></div>
+      </div>
+      <div class="info-card" aria-hidden="true">
+        <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+        <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+        <div class="info-card-inner"><video src="images/info/info-8.mp4" autoplay loop muted playsinline></video></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <div class="signature-stage" id="signatureStage">
+    <div class="signature-sky" id="signatureSky"></div>
+
+    <div class="zodiac-garden" id="zodiacGarden">
+      <div class="zodiac-plant" style="left:5%; top:8%; color:var(--primary);">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Aries">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="6" y1="26" x2="14" y2="18"/><line x1="14" y1="18" x2="20" y2="12"/>
+            <line x1="20" y1="12" x2="32" y2="15"/><line x1="20" y1="12" x2="23" y2="30"/>
+          </g>
+          <g fill="currentColor"><circle cx="6" cy="26" r="2"/><circle cx="14" cy="18" r="2"/><circle cx="20" cy="12" r="2.4"/><circle cx="32" cy="15" r="2"/><circle cx="23" cy="30" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem"> +
+=+=
+ -=-</pre>
+      </div>
+
+      <div class="zodiac-plant" style="left:15%; top:58%; color:#2B58D5;">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Taurus">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="4" y1="26" x2="13" y2="14"/><line x1="13" y1="14" x2="21" y2="22"/>
+            <line x1="21" y1="22" x2="30" y2="10"/><line x1="30" y1="10" x2="37" y2="3"/>
+          </g>
+          <g fill="currentColor"><circle cx="4" cy="26" r="2"/><circle cx="13" cy="14" r="2"/><circle cx="21" cy="22" r="2"/><circle cx="30" cy="10" r="2"/><circle cx="37" cy="3" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem">=+
+-+-
+ =</pre>
+      </div>
+
+      <div class="zodiac-plant" style="left:25%; top:22%; color:var(--accent-green-ink);">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Gemini">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="9" y1="4" x2="9" y2="17"/><line x1="9" y1="17" x2="9" y2="30"/>
+            <line x1="28" y1="4" x2="28" y2="17"/><line x1="28" y1="17" x2="28" y2="30"/>
+            <line x1="9" y1="17" x2="28" y2="17"/>
+          </g>
+          <g fill="currentColor"><circle cx="9" cy="4" r="2"/><circle cx="9" cy="17" r="2"/><circle cx="9" cy="30" r="2"/><circle cx="28" cy="4" r="2"/><circle cx="28" cy="17" r="2"/><circle cx="28" cy="30" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem">+=+
+ -
+=-=</pre>
+      </div>
+
+      <div class="zodiac-plant" style="left:7%; top:78%; color:var(--accent-pink-ink);">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Cancer">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="20" y1="3" x2="20" y2="15"/><line x1="20" y1="15" x2="8" y2="27"/><line x1="20" y1="15" x2="32" y2="27"/>
+          </g>
+          <g fill="currentColor"><circle cx="20" cy="3" r="2"/><circle cx="20" cy="15" r="2.4"/><circle cx="8" cy="27" r="2"/><circle cx="32" cy="27" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem">-+-
+=+=
+ -</pre>
+      </div>
+
+      <div class="zodiac-plant" style="left:22%; top:88%; color:var(--accent-yellow-ink);">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Leo">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="10" y1="4" x2="5" y2="13"/><line x1="5" y1="13" x2="10" y2="22"/>
+            <line x1="10" y1="22" x2="19" y2="26"/><line x1="19" y1="26" x2="31" y2="17"/>
+          </g>
+          <g fill="currentColor"><circle cx="10" cy="4" r="2"/><circle cx="5" cy="13" r="2"/><circle cx="10" cy="22" r="2"/><circle cx="19" cy="26" r="2"/><circle cx="31" cy="17" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem"> =
++-+
+-=-</pre>
+      </div>
+
+      <div class="zodiac-plant" style="right:6%; top:10%; color:var(--accent-blue-ink);">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Virgo">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="3" y1="28" x2="12" y2="17"/><line x1="12" y1="17" x2="19" y2="24"/>
+            <line x1="19" y1="24" x2="28" y2="11"/><line x1="28" y1="11" x2="37" y2="18"/>
+          </g>
+          <g fill="currentColor"><circle cx="3" cy="28" r="2"/><circle cx="12" cy="17" r="2"/><circle cx="19" cy="24" r="2"/><circle cx="28" cy="11" r="2"/><circle cx="37" cy="18" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem">+=+
+ -=
+ +</pre>
+      </div>
+
+      <div class="zodiac-plant" style="right:16%; top:56%; color:var(--primary);">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Libra">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="8" y1="6" x2="19" y2="20"/><line x1="30" y1="6" x2="19" y2="20"/><line x1="19" y1="20" x2="19" y2="32"/>
+          </g>
+          <g fill="currentColor"><circle cx="8" cy="6" r="2"/><circle cx="30" cy="6" r="2"/><circle cx="19" cy="20" r="2.4"/><circle cx="19" cy="32" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem">-+-
+ =
++-+</pre>
+      </div>
+
+      <div class="zodiac-plant" style="right:27%; top:24%; color:#2B58D5;">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Scorpio">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="4" y1="4" x2="4" y2="15"/><line x1="4" y1="15" x2="9" y2="24"/>
+            <line x1="9" y1="24" x2="17" y2="29"/><line x1="17" y1="29" x2="26" y2="27"/><line x1="26" y1="27" x2="31" y2="18"/>
+          </g>
+          <g fill="currentColor"><circle cx="4" cy="4" r="2"/><circle cx="4" cy="15" r="2"/><circle cx="9" cy="24" r="2"/><circle cx="17" cy="29" r="2"/><circle cx="26" cy="27" r="2"/><circle cx="31" cy="18" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem">=+=
+-+
+ =</pre>
+      </div>
+
+      <div class="zodiac-plant" style="right:9%; top:80%; color:var(--accent-green-ink);">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Sagittarius">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="4" y1="30" x2="15" y2="20"/><line x1="15" y1="20" x2="24" y2="10"/>
+            <line x1="24" y1="10" x2="34" y2="2"/><line x1="15" y1="20" x2="4" y2="13"/>
+          </g>
+          <g fill="currentColor"><circle cx="4" cy="30" r="2"/><circle cx="15" cy="20" r="2.4"/><circle cx="24" cy="10" r="2"/><circle cx="34" cy="2" r="2"/><circle cx="4" cy="13" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem">+-+
+=-=
+ +</pre>
+      </div>
+
+      <div class="zodiac-plant" style="right:25%; top:90%; color:var(--accent-pink-ink);">
+        <svg class="zodiac-constellation" viewBox="0 0 40 34" width="34" height="30" aria-label="Pisces">
+          <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <line x1="4" y1="6" x2="12" y2="3"/><line x1="12" y1="3" x2="12" y2="13"/><line x1="12" y1="13" x2="4" y2="6"/>
+            <line x1="12" y1="13" x2="21" y2="23"/><line x1="21" y1="23" x2="27" y2="20"/>
+            <line x1="27" y1="20" x2="34" y2="17"/><line x1="34" y1="17" x2="34" y2="27"/><line x1="34" y1="27" x2="27" y2="20"/>
+          </g>
+          <g fill="currentColor"><circle cx="4" cy="6" r="2"/><circle cx="12" cy="3" r="2"/><circle cx="12" cy="13" r="2"/><circle cx="21" cy="23" r="2"/><circle cx="27" cy="20" r="2"/><circle cx="34" cy="17" r="2"/><circle cx="34" cy="27" r="2"/></g>
+        </svg>
+        <pre class="zodiac-stem">-=-
+ +=
+-+</pre>
+      </div>
+    </div>
+
+    <p class="signature-hint" id="signatureHint">Click to grow</p>
+    <h2 class="signature-name" id="signatureName">
+      <span class="signature-letter">a</span><span class="signature-letter">l</span><span class="signature-letter">i</span><span class="signature-letter">n</span><span class="signature-letter">a</span><span class="signature-letter signature-space"> </span><span class="signature-letter">x</span><span class="signature-letter">i</span><span class="signature-letter">e</span>
+    </h2>
+    <a class="signature-email" id="signatureEmail" href="mailto:wxie8@art.edu">wxie8@art.edu</a>
+    <a class="signature-resume" id="signatureResume" href="resume.html">resume &gt;</a>
+  </div>
+</section>
+
+<div class="video-lightbox-backdrop" id="videoLightboxBackdrop"></div>
+<div class="video-lightbox" id="videoLightbox">
+  <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+  <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+  <div class="video-lightbox-cta project-lightbox-links" id="videoLightboxCta"></div>
+</div>
+
+<div class="project-lightbox-backdrop" id="projectLightboxBackdrop"></div>
+<div class="project-lightbox" id="projectLightbox">
+  <span class="v2-dot tl"></span><span class="v2-dot ml"></span><span class="v2-dot bl"></span>
+  <span class="v2-dot tr"></span><span class="v2-dot mr"></span><span class="v2-dot br"></span>
+  <button class="project-lightbox-close" id="projectLightboxClose" aria-label="Close project preview">✕</button>
+  <img class="project-lightbox-img" alt="" />
+  <div class="project-lightbox-videos" id="projectLightboxVideos"></div>
+  <div class="project-lightbox-body">
+    <h3 class="project-lightbox-title"></h3>
+    <p class="project-lightbox-desc"></p>
+    <div class="project-lightbox-links"></div>
+    <div class="project-lightbox-section" id="projectLightboxSection"></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Alina Xie</p>
+  <p>Product Designer in Bay Area</p>
+</footer>
+
+<script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Transparent Stargazing Interactive</title>
+  <style>
+    body {
+      margin: 0;
+      /* 假设你网页原本的浅灰背景 */
+      background-color: #f5f5f7; 
+      font-family: monospace;
+    }
+
+    /* 容器设为完全透明 */
+    .sky-container {
+      position: relative;
+      width: 100%;
+      height: 1040px;
+      background: transparent; 
+      overflow: hidden;
+      cursor: crosshair;
+      user-select: none;
+    }
+
+    /* 1. 背景星座层：字号加大、透明度调低，隐隐闪烁 */
+    .constellation-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .constellation {
+      position: absolute;
+      font-family: monospace;
+      font-size: 22px; /* 大号字 */
+      line-height: 1.2;
+      white-space: pre;
+      color: #64748b; /* 低饱和度蓝灰 */
+      opacity: 0.18;  /* 隐隐约约 */
+      animation: breathe 7s infinite ease-in-out;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 0.08; transform: scale(0.98); }
+      50% { opacity: 0.28; transform: scale(1.02); }
+    }
+
+    /* 2. 交互生成的流星/星星：大字号 + 疏散轨迹 */
+    .star-node {
+      position: absolute;
+      z-index: 1;
+      font-family: monospace;
+      font-weight: bold;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: opacity 1.8s ease-out, transform 1.8s ease-out;
+      white-space: pre;
+    }
+
+    .twinkle {
+      animation: twinkle 2.5s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="sky-container" id="sky">
+    <div class="constellation-layer" id="constellationLayer"></div>
+  </div>
+
+  <script>
+    const sky = document.getElementById('sky');
+    const constellationLayer = document.getElementById('constellationLayer');
+
+    // 大号背景 ASCII 星座
+    const constellations = [
+      `+------+\n|  ✦   |\n+------*`,
+      `    .---*\n   /     \\\n  ✦       ✧`,
+      `+---.\n     \\---✦\n          \\---*`,
+      `  ✦---✧\n  |   |\n  *---*`
+    ];
+
+    // 初始化隐约的背景星座
+    function initConstellations() {
+      constPositions = [
+        { left: '15%', top: '20%' },
+        { left: '65%', top: '15%' },
+        { left: '35%', top: '55%' },
+        { left: '75%', top: '60%' }
+      ];
+
+      constPositions.forEach((pos, index) => {
+        const item = document.createElement('div');
+        item.className = 'constellation';
+        item.innerText = constellations[index % constellations.length];
+        item.style.left = pos.left;
+        item.style.top = pos.top;
+        item.style.animationDelay = `${index * 1.5}s`;
+        constellationLayer.appendChild(item);
+      });
+    }
+    initConstellations();
+
+    // 交互参数控制
+    const colors = ['#2d3748', '#4a5568', '#3182ce', '#d69e2e', '#805ad5', '#e53e3e'];
+    const starChars = ['*', '+', '.', '✦', '✧'];
+    const trailChars = ['*', '=', '-', '~', '.', '°', '✦'];
+
+    let lastX = 0;
+    let lastY = 0;
+    
+    // 【关键调整 1】：极大的间距阈值，滑动 80px 才生成一个，保证非常疏散（Loose）
+    const MIN_DISTANCE = 80; 
+
+    function createStar(x, y, char, isFade = true) {
+      const star = document.createElement('div');
+      star.className = 'star-node';
+      star.innerText = char;
+      
+      // 【关键调整 2】：大字号（24px - 36px）
+      const size = Math.floor(Math.random() * 12) + 24; 
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      star.style.color = color;
+      star.style.fontSize = `${size}px`;
+      star.style.left = `${x}px`;
+      star.style.top = `${y}px`;
+
+      sky.appendChild(star);
+
+      if (isFade) {
+        setTimeout(() => {
+          star.style.opacity = '0';
+          star.style.transform = 'translate(-50%, -120%) scale(0.7)';
+        }, 100);
+
+        setTimeout(() => star.remove(), 1900);
+      } else {
+        star.classList.add('twinkle');
+      }
+    }
+
+    // 点击事件
+    sky.addEventListener('click', (e) => {
+      const rect = sky.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const char = starChars[Math.floor(Math.random() * starChars.length)];
+      createStar(x, y, char, false);
+    });
+
+    // 拖动事件（带有大抖动疏散感）
+    sky.addEventListener('mousemove', (e) => {
+      if (e.buttons !== 1) return; // 必须按住鼠标滑动
+
+      const deltaX = e.clientX - lastX;
+      const deltaY = e.clientY - lastY;
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+      if (distance > MIN_DISTANCE) {
+        const rect = sky.getBoundingClientRect();
+        
+        // 【关键调整 3】：增加随机位置偏移（Jitter），让大字符散落开来
+        const jitterX = (Math.random() - 0.5) * 30;
+        const jitterY = (Math.random() - 0.5) * 30;
+        
+        const x = e.clientX - rect.left + jitterX;
+        const y = e.clientY - rect.top + jitterY;
+        
+        const char = trailChars[Math.floor(Math.random() * trailChars.length)];
+        createStar(x, y, char, true);
+
+        lastX = e.clientX;
+        lastY = e.clientY;
+      }
+    });
+  </script>
+</body>
+</html>

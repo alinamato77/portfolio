@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FLUX — Alina Xie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styleguide.css">
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">Other</a></li>
+    <li><a href="index.html#moments">Moments</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="resume.html">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- CLEAN LAYOUT HEADER -->
+<div class="clean-header" id="hero" data-reveal>
+  <a href="index.html#work" class="back-link">← Back to Work</a>
+  <div class="clean-header-grid">
+    <div class="clean-header-text">
+      <h1 class="proj-title">FL<em>U</em>X.</h1>
+      <p class="clean-subtitle">Redefining your sense of time.</p>
+    </div>
+    <div class="clean-header-mockups" id="mockupWrap">
+      <img src="images/flux-chronoception.png" alt="Chronoception concept illustration — a brain made of clock faces" class="mockup mockup-back" />
+      <img src="images/flux-hardware.png" alt="FLUX wristband hardware" class="mockup mockup-front" />
+      <div class="hydration-card" id="hydrationCard">
+        <svg class="hydration-ring" viewBox="0 0 56 56">
+          <circle class="bg" cx="28" cy="28" r="22" />
+          <circle class="fg" cx="28" cy="28" r="22" stroke-dasharray="138.2" stroke-dashoffset="138.2" id="hydrationRingFg" />
+        </svg>
+        <div class="hydration-card-text">
+          <span class="hc-label">Time Lost</span>
+          <span class="hc-value">51% (ADHD)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- META ROW -->
+<div class="clean-meta-row" data-reveal>
+  <div class="clean-meta-item" data-reveal-item>
+    <span class="meta-label">Role</span>
+    <span class="clean-meta-val">UI/UX Designer, UX Researcher</span>
+  </div>
+  <div class="clean-meta-item" data-reveal-item>
+    <span class="meta-label">Project Type</span>
+    <span class="clean-meta-val">0 → 1, Group Project</span>
+  </div>
+  <div class="clean-meta-item" data-reveal-item>
+    <span class="meta-label">Deliverables</span>
+    <span class="clean-meta-val">UX Research, Hardware Concept, UI, Prototyping</span>
+  </div>
+  <div class="clean-meta-item" data-reveal-item>
+    <span class="meta-label">Platform</span>
+    <span class="clean-meta-val">iOS, Android, Wearable</span>
+  </div>
+</div>
+
+<!-- CASE STUDY BODY (side nav is scoped/sticky to this wrapper only) -->
+<div class="case-study-body">
+<nav class="side-nav" id="sideNav">
+  <a href="#problem" class="side-nav-link" data-target="problem"><span class="side-nav-dot"></span><span class="side-nav-label">Problem</span></a>
+  <a href="#testing" class="side-nav-link" data-target="testing"><span class="side-nav-dot"></span><span class="side-nav-label">Testing</span></a>
+  <a href="#prototype" class="side-nav-link" data-target="prototype"><span class="side-nav-dot"></span><span class="side-nav-label">Prototype</span></a>
+  <a href="#outcomes" class="side-nav-link" data-target="outcomes"><span class="side-nav-dot"></span><span class="side-nav-label">Outcomes</span></a>
+  <a href="#next" class="side-nav-link" data-target="next"><span class="side-nav-dot"></span><span class="side-nav-label">Next Steps</span></a>
+</nav>
+
+<!-- BODY COPY -->
+<div class="clean-copy" id="problem" data-reveal>
+    <h2 class="clean-block-title">The Problem</h2>
+  <p>We have tools to track our steps, our sleep, our screen time — but nothing tells us when we've slipped out of focus or how long we've been stuck there. Young professionals don't lose their days to laziness; they lose them to invisible mental drift and hours spent in the wrong cognitive state, with no signal that anything is wrong.</p>
+    <h2 class="clean-block-title">The Solution</h2>
+  <p>FLUX makes chronoception — the human sense of time — legible for the first time. By pairing a minimalist wristband with an intelligent app, we translate physiological data into a real-time cognitive state signal, bridging the gap between perceived time and objective reality.</p>
+</div>
+
+<!-- WHO IT'S FOR -->
+<div class="clean-block" id="testing" data-reveal>
+  <h2 class="clean-block-title">Who FLUX Is For</h2>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead">Young professionals, 22–35</p>
+    <p class="clean-item-desc">High-functioning, digitally native knowledge workers who feel their focus slipping but have no way to see where the time actually went.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead">The neurodivergent core</p>
+    <p class="clean-item-desc">Adults with ADHD lose 51% of their work time to distraction, nearly double the 25% lost by neurotypical peers — the sharpest edge of the problem FLUX was built to address.</p>
+  </div>
+</div>
+
+<!-- PROTOTYPE -->
+<div class="clean-gallery" id="prototype" data-reveal>
+  <h2 class="clean-block-title">Prototype</h2>
+  <div class="clean-gallery-stage" id="galleryStage">
+    <video src="images/flux-flow-enter.mp4" poster="images/flux-flow-enter.png" controls autoplay muted loop playsinline preload="metadata" class="active"></video>
+    <video src="images/flux-flow-exit.mp4" poster="images/flux-flow-exit.png" controls muted loop playsinline preload="metadata"></video>
+    <video src="images/flux-flow-insight.mp4" poster="images/flux-flow-insight.png" controls muted loop playsinline preload="metadata"></video>
+    <img src="images/flux-hardware-diagram.png" alt="Wristband hardware diagram — sensors and controls" />
+  </div>
+  <div class="clean-gallery-caption" id="galleryCaption">
+    <h3>Enter Flow</h3>
+    <p>You want to work but aren't yet focused. Tap to begin — FLUX prompts your intention and enables Do Not Disturb across selected apps.</p>
+  </div>
+  <div class="clean-gallery-thumbs" id="galleryThumbs">
+    <button class="clean-gallery-thumb active" data-title="Enter Flow" data-desc="You want to work but aren't yet focused. Tap to begin — FLUX prompts your intention and enables Do Not Disturb across selected apps.">
+      <img src="images/flux-flow-enter.png" alt="Enter Flow thumbnail" />
+    </button>
+    <button class="clean-gallery-thumb" data-title="Exit Flow" data-desc="After extended deep focus, fatigue signals emerge. Confirm you want to step out, and FLUX acknowledges it.">
+      <img src="images/flux-flow-exit.png" alt="Exit Flow thumbnail" />
+    </button>
+    <button class="clean-gallery-thumb" data-title="Weekly Insight" data-desc="A summary of your flow states across the week, with one actionable tip to protect, extend, or recover your best hours.">
+      <img src="images/flux-flow-insight.png" alt="Weekly Insight thumbnail" />
+    </button>
+    <button class="clean-gallery-thumb" data-wide="true" data-title="The Hardware" data-desc="A minimalist sensor layer — HR, temperature, and moisture sensors classify your cognitive state in real time, with an LED that glows orange in Flow, blue when drifting, and off when the battery's low.">
+      <img src="images/flux-hardware-diagram.png" alt="Hardware diagram thumbnail" />
+    </button>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="clean-block" data-reveal>
+  <h2 class="clean-block-title">How It Works</h2>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead clean-item-lead--ink">1. Detect</p>
+    <p class="clean-item-desc">Track nervous system patterns to identify Flow, Drift, or Stress states in real time.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead clean-item-lead--ink">2. Alert</p>
+    <p class="clean-item-desc">Gentle tactile and LED nudges when your state misaligns with your intention.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead clean-item-lead--ink">3. Align</p>
+    <p class="clean-item-desc">Review weekly insights to actively rebuild your chronoception over time.</p>
+  </div>
+</div>
+
+<!-- KEY INSIGHTS -->
+<div class="clean-block" id="outcomes" data-reveal>
+  <h2 class="clean-block-title">Key Insights</h2>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead">1 hour lost to distraction daily</p>
+    <p class="clean-item-desc">per US knowledge worker — the baseline cost this project set out to address.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead">23 minutes to regain focus</p>
+    <p class="clean-item-desc">after a single interruption, according to attention-research benchmarks.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead">51% of work time lost</p>
+    <p class="clean-item-desc">by adults with ADHD, versus 25% for neurotypical peers — the sharpest edge of the problem.</p>
+  </div>
+</div>
+
+<!-- NEXT STEP -->
+<div class="clean-block" id="next" data-reveal>
+  <h2 class="clean-block-title">Next Step</h2>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead clean-item-lead--ink">1. Clinical validation</p>
+    <p class="clean-item-desc">Partner with sleep and attention researchers to benchmark the sensor model against clinical-grade EEG baselines.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead clean-item-lead--ink">2. Adaptive interventions</p>
+    <p class="clean-item-desc">Learn each person's individual flow and drift rhythm so FLUX can anticipate a state shift instead of just reacting to it.</p>
+  </div>
+  <div class="clean-item" data-reveal-item>
+    <p class="clean-item-lead clean-item-lead--ink">3. Team-level insights</p>
+    <p class="clean-item-desc">Aggregate anonymized flow data across a team to surface systemic scheduling problems, not just individual habits.</p>
+  </div>
+</div>
+</div><!-- /.case-study-body -->
+
+<!-- PROTOTYPE CTA -->
+<div class="cta-section" id="cta" data-reveal>
+  <p class="cta-text">See it in <em>action.</em></p>
+  <a class="cta-btn" href="https://www.figma.com/make/cokQrYV8cw9ipU6a2Bwdkp/FLUX?fullscreen=1&t=0nIg2CDEoVY6D0Rw-1&code-node-id=0-9" target="_blank" rel="noopener">View Prototype ↗</a>
+</div>
+
+<!-- PROJECT NAV -->
+<div class="project-nav">
+  <a href="project-hydrated-cat.html" class="proj-nav-link">
+    <span>← Previous</span>
+    <span class="nav-proj-title">Hydrated Cat</span>
+  </a>
+  <a href="index.html#about" class="proj-nav-link right">
+    <span>Next to Other Works →</span>
+    <span class="nav-proj-title">Other Works</span>
+  </a>
+</div>
+
+<footer>
+  <p>© 2026 Alina Xie</p>
+  <p>Product Designer in Bay Area</p>
+</footer>
+
+<script src="js/project-flux.js"></script>
+</body>
+</html>
