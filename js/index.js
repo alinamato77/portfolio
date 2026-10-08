@@ -322,8 +322,9 @@ if (heroSection && sky) {
   });
 }
 
-// "My Other Works" carousel: scroll-snap track synced with dot pagination.
-// It advances on its own, and the centred slide's video preview plays by itself.
+// "My Other Works" carousel: starts at the left edge with every video playing on a loop.
+// The first slide stands out by default; pointing at another slide makes that one stand out.
+// It still moves along by itself, and rests while the pointer is on it.
 let syncCarouselVideos = () => {};
 const moreWorkTrack = document.getElementById('moreWorkTrack');
 const moreWorkDots = document.querySelectorAll('.more-work-dot');
@@ -331,41 +332,42 @@ if (moreWorkTrack && moreWorkDots.length) {
   const slides = [...moreWorkTrack.querySelectorAll('.more-work-slide')];
   const carousel = moreWorkTrack.closest('.more-work-carousel') || moreWorkTrack;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const EDGE = 16; // left room inside the track, matches the CSS padding
   let inView = false;
+  let hovered = -1;
+  let hoverTimer;
   let lastPointerMove = 0;
   let holdUntil = 0;
   let autoTimer;
 
   const lightboxOpen = () => !!document.querySelector('.video-lightbox.open, .project-lightbox.open');
-  const activeIndex = () => Math.max(0, slides.findIndex((s) => s.classList.contains('active')));
 
-  function updateActiveDot() {
-    const trackRect = moreWorkTrack.getBoundingClientRect();
-    const center = trackRect.left + trackRect.width / 2;
-    let closestIndex = 0;
-    let closestDistance = Infinity;
+  // The slide whose left edge is closest to the left edge of the track
+  function leadIndex() {
+    const t = moreWorkTrack.getBoundingClientRect().left + EDGE;
+    let best = 0;
+    let bestDistance = Infinity;
     slides.forEach((slide, i) => {
-      const r = slide.getBoundingClientRect();
-      const slideCenter = r.left + r.width / 2;
-      const distance = Math.abs(slideCenter - center);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = i;
-      }
+      const d = Math.abs(slide.getBoundingClientRect().left - t);
+      if (d < bestDistance) { bestDistance = d; best = i; }
     });
-    moreWorkDots.forEach((dot, i) => dot.classList.toggle('active', i === closestIndex));
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === closestIndex));
-    syncCarouselVideos();
-    schedule();
+    return best;
   }
 
-  // Only the centred slide's video plays, and only while the carousel is on screen
+  function render() {
+    const lead = leadIndex();
+    const standOut = hovered >= 0 ? hovered : lead;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === standOut));
+    moreWorkDots.forEach((dot, i) => dot.classList.toggle('active', i === lead));
+  }
+
+  // Every video plays on a loop while the carousel is on screen
   syncCarouselVideos = function () {
-    if (lightboxOpen()) return;
     slides.forEach((slide) => {
       const video = slide.querySelector('video.more-work-video');
       if (!video) return;
-      if (inView && !document.hidden && slide.classList.contains('active')) video.play().catch(() => {});
+      video.loop = true;
+      if (inView && !document.hidden && !lightboxOpen()) video.play().catch(() => {});
       else if (!video.paused) video.pause();
     });
   };
@@ -374,32 +376,28 @@ if (moreWorkTrack && moreWorkDots.length) {
   function goTo(i) {
     const t = moreWorkTrack.getBoundingClientRect();
     const s = slides[i].getBoundingClientRect();
-    moreWorkTrack.scrollTo({
-      left: moreWorkTrack.scrollLeft + (s.left + s.width / 2) - (t.left + t.width / 2),
-      behavior: 'smooth',
-    });
+    moreWorkTrack.scrollTo({ left: moreWorkTrack.scrollLeft + (s.left - t.left) - EDGE, behavior: 'smooth' });
   }
 
   function schedule() {
     clearTimeout(autoTimer);
     if (reduceMotion) return;
-    const hasVideo = !!slides[activeIndex()].querySelector('video');
-    autoTimer = setTimeout(advance, hasVideo ? 5000 : 2500);
+    autoTimer = setTimeout(advance, 5000);
   }
 
   function advance() {
-    if (!inView || Date.now() - lastPointerMove < 2000 || document.hidden || lightboxOpen() || Date.now() < holdUntil) {
+    if (!inView || hovered >= 0 || Date.now() - lastPointerMove < 2000 || document.hidden || lightboxOpen() || Date.now() < holdUntil) {
       schedule();
       return;
     }
-    goTo((activeIndex() + 1) % slides.length);
-    autoTimer = setTimeout(schedule, 1500);
+    goTo((leadIndex() + 1) % slides.length);
+    schedule();
   }
 
   let scrollTimeout;
   moreWorkTrack.addEventListener('scroll', () => {
     clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(updateActiveDot, 80);
+    scrollTimeout = setTimeout(render, 80);
   });
 
   moreWorkDots.forEach((dot, i) => {
@@ -409,11 +407,19 @@ if (moreWorkTrack && moreWorkDots.length) {
     });
   });
 
+  slides.forEach((slide, i) => {
+    slide.addEventListener('mouseenter', () => { clearTimeout(hoverTimer); hovered = i; render(); });
+    slide.addEventListener('mouseleave', () => {
+      clearTimeout(hoverTimer);
+      // a short pause so crossing the gap between two slides does not flicker
+      hoverTimer = setTimeout(() => { hovered = -1; render(); }, 160);
+    });
+  });
+
   // Hands-on use pauses the auto-advance for a few seconds
   ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach((type) => {
     moreWorkTrack.addEventListener(type, () => { holdUntil = Date.now() + 7000; }, { passive: true });
   });
-  // Pointing at a slide (moving the mouse over the track) also holds it still
   moreWorkTrack.addEventListener('mousemove', () => { lastPointerMove = Date.now(); }, { passive: true });
   document.addEventListener('visibilitychange', syncCarouselVideos);
 
@@ -423,7 +429,8 @@ if (moreWorkTrack && moreWorkDots.length) {
     schedule();
   }, { threshold: 0.4 }).observe(carousel);
 
-  updateActiveDot();
+  moreWorkTrack.scrollLeft = 0;
+  render();
 }
 
 // Signature reveal: LEGO models snap together out of 3D bricks once the section
