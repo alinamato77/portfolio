@@ -1,12 +1,3 @@
-const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-});
 
 // Cursor-tracking tilt on the hero mockups
 const mockupWrap = document.getElementById('mockupWrap');
@@ -41,7 +32,7 @@ if (hydrationCard && hydrationRingFg) {
   ringObserver.observe(hydrationCard);
 }
 
-// Screen gallery — click a thumbnail to feature it in the stage; videos pause when
+// Screen gallery - click a thumbnail to feature it in the stage; videos pause when
 // switched away and resume playing whenever they become the active item again
 const galleryStage = document.getElementById('galleryStage');
 const galleryThumbs = document.getElementById('galleryThumbs');
@@ -68,7 +59,7 @@ if (galleryStage && galleryThumbs && galleryCaption) {
   });
 }
 
-// Scroll-reveal — fade + rise each section in once it enters the viewport,
+// Scroll-reveal - fade + rise each section in once it enters the viewport,
 // staggering any marked child items for a smarter, cascading feel
 const revealEls = [...document.querySelectorAll('[data-reveal]')];
 if (revealEls.length) {
@@ -87,7 +78,7 @@ if (revealEls.length) {
   revealEls.forEach(el => revealObserver.observe(el));
 }
 
-// Side navigation — highlights the section currently in view, and switches
+// Side navigation - highlights the section currently in view, and switches
 // instantly on click instead of waiting on scroll to catch up
 const sideNav = document.getElementById('sideNav');
 if (sideNav) {

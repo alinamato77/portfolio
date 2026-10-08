@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hydrated Cat — Alina Xie</title>
+  <title>Hydrated Cat | Alina Xie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styleguide.css">
+<style id="white-page-background">:root{--bg:#ffffff}html,body{background:#ffffff!important}body::before,body::after{background-image:none!important}</style>
 </head>
 <body>
 <div class="cursor" id="cursor"></div>
@@ -15,9 +16,9 @@
   <ul class="nav-links">
     <li><a href="index.html#work">Work</a></li>
     <li><a href="index.html#about">Other</a></li>
+    <li><a href="index.html" class="nav-alina">Alina</a></li>
     <li><a href="index.html#moments">Moments</a></li>
     <li><a href="index.html#contact">Contact</a></li>
-    <li><a href="resume.html">Resume</a></li>
   </ul>
 </nav>
 
@@ -87,7 +88,7 @@
 <!-- USER TESTING -->
 <div class="clean-block persona-block" id="testing" data-reveal>
   <h2 class="clean-block-title">User Testing</h2>
-  <p class="clean-block-desc">Two personas emerged from interviews and usability testing — click the card to switch between them.</p>
+  <p class="clean-block-desc">Two personas emerged from interviews and usability testing. Click the card to switch between them.</p>
   <div class="persona-grid">
     <div class="persona-card-col">
       <button class="persona-card-stack" id="personaToggle" aria-label="Switch to the other persona">
@@ -145,7 +146,7 @@
     <button class="clean-gallery-thumb active" data-title="Select your drink" data-desc="Onboarding through daily logging in motion.">
       <img src="images/hydrated-cat-prototype-poster.jpg" alt="Prototype thumbnail" />
     </button>
-    <button class="clean-gallery-thumb" data-title="Set the goal" data-desc="A quick 3-step flow captures activity level and recommends a daily water goal — no manual math required.">
+    <button class="clean-gallery-thumb" data-title="Set the goal" data-desc="A quick 3-step flow captures activity level and recommends a daily water goal, with no manual math required.">
       <img src="images/hydrated-cat-screen-1.png" alt="Biological setup thumbnail" />
     </button>
     <button class="clean-gallery-thumb" data-title="Tune the reminders" data-desc="Users control notification frequency and active hours, so nudges feel considerate, not naggy.">
@@ -192,12 +193,6 @@
 </div>
 </div><!-- /.case-study-body -->
 
-<!-- PROTOTYPE CTA -->
-<div class="cta-section" id="cta" data-reveal>
-  <p class="cta-text">See it in <em>action.</em></p>
-  <a class="cta-btn" href="https://www.figma.com/proto/6rPmnjkzL2LmhlWoAtVRyu/prototype-v2--Copy-?node-id=2016-13016&viewport=129%2C37%2C0.21&t=1weuv7Y0zixsakAw-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2016%3A13016&show-proto-sidebar=1&page-id=2016%3A12268" target="_blank" rel="noopener">View Prototype ↗</a>
-</div>
-
 <!-- PROJECT NAV -->
 <div class="project-nav">
   <a href="index.html#work" class="proj-nav-link">
@@ -215,5 +210,7 @@
 </footer>
 
 <script src="js/project-hydrated-cat.js"></script>
+<script src="js/cursor.js"></script>
+<script src="js/fit-headings.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Back-end / Website Design — Alina Xie</title>
+  <title>Back-end / Website Design | Alina Xie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styleguide.css">
@@ -51,7 +51,7 @@
 <!-- RESEARCH -->
 <div class="clean-block">
   <h2 class="clean-block-title">Research</h2>
-  <p class="clean-block-desc">Notes on the research phase go here — site requirements, structure, and technical constraints.</p>
+  <p class="clean-block-desc">Notes on the research phase go here: site requirements, structure, and technical constraints.</p>
   <div class="clean-photo-grid">
     <div class="more-work-holder">Photo</div>
     <div class="more-work-holder">Photo</div>
@@ -62,7 +62,7 @@
 <!-- MOCKUP -->
 <div class="clean-block">
   <h2 class="clean-block-title">Mockup</h2>
-  <p class="clean-block-desc">Notes on the final mockups go here — page layouts and the finished site design.</p>
+  <p class="clean-block-desc">Notes on the final mockups go here: page layouts and the finished site design.</p>
   <div class="clean-photo-grid">
     <div class="more-work-holder">Photo</div>
     <div class="more-work-holder">Photo</div>
@@ -79,9 +79,11 @@
 
 <footer>
   <p>© 2026 Alina Xie</p>
-  <p>UI/UX Designer — San Francisco</p>
+  <p>UI/UX Designer, San Francisco</p>
 </footer>
 
 <script src="../js/web-design.js"></script>
+<script src="../js/cursor.js"></script>
+<script src="../js/fit-headings.js"></script>
 </body>
 </html>

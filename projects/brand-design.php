@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Public Izakaya — Alina Xie</title>
+  <title>The Public Izakaya | Alina Xie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styleguide.css">
@@ -25,7 +25,7 @@
   <a href="../index.html#about" class="back-link">← Back to Work</a>
   <div class="project-header-grid">
     <div>
-      <h1 class="proj-title">The Public<br><em>Izakaya</em>.</h1>
+      <h1 class="proj-title">The Public <em>Izakaya</em>.</h1>
     </div>
     <div class="proj-meta">
       <div class="proj-meta-row">
@@ -50,7 +50,7 @@
 
 <div class="presentation-section">
   <p class="section-label">Preview</p>
-  <img class="presentation-img" src="../images/izakaya-menu-website-preview.jpg" alt="The Public Izakaya — menu and website mockup on laptop and tablet" />
+  <img class="presentation-img" src="../images/izakaya-menu-website-preview.jpg" alt="The Public Izakaya: menu and website mockup on laptop and tablet" />
 </div>
 
 <div class="cta-section">
@@ -66,9 +66,11 @@
 
 <footer>
   <p>© 2026 Alina Xie</p>
-  <p>UI/UX Designer — San Francisco</p>
+  <p>UI/UX Designer, San Francisco</p>
 </footer>
 
 <script src="../js/brand-design.js"></script>
+<script src="../js/cursor.js"></script>
+<script src="../js/fit-headings.js"></script>
 </body>
 </html>

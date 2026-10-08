@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FLUX Case Study | Alina Xie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styleguide.css">
+<style id="white-page-background">:root{--bg:#ffffff}html,body{background:#ffffff!important}body::before,body::after{background-image:none!important}</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">Other</a></li>
+    <li><a href="index.html" class="nav-alina">Alina</a></li>
+    <li><a href="index.html#moments">Moments</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="ds-hero ds-hero--flux" id="hero">
+  <div class="ds-hero-card" data-reveal>
+    <a href="index.html#work" class="back-link">← Back to Work</a>
+    <div class="clean-header-grid">
+      <div class="clean-header-text">
+        <p class="ds-eyebrow">Case study · Wearable + App</p>
+        <h1 class="proj-title">FL<em>U</em>X.</h1>
+        <p class="clean-subtitle">Redefining your sense of time.</p>
+        <div class="proj-tags">
+          <span class="tag">AI Product Design</span>
+          <span class="tag">Figma Make</span>
+          <span class="tag">Hardware &amp; Software</span>
+          <span class="tag">Group Project</span>
+        </div>
+      </div>
+      <div class="clean-header-mockups" id="mockupWrap">
+        <img src="images/flux-chronoception.png" alt="Chronoception concept illustration: a brain made of clock faces" class="mockup mockup-back" />
+        <img src="images/flux-hardware.png" alt="FLUX wristband hardware" class="mockup mockup-front" />
+        <div class="hydration-card" id="hydrationCard">
+          <svg class="hydration-ring" viewBox="0 0 56 56">
+            <circle class="bg" cx="28" cy="28" r="22" />
+            <circle class="fg" cx="28" cy="28" r="22" stroke-dasharray="138.2" stroke-dashoffset="138.2" id="hydrationRingFg" data-offset="68" />
+          </svg>
+          <div class="hydration-card-text">
+            <span class="hc-label">Time Lost</span>
+            <span class="hc-value">51% (ADHD)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- META -->
+<div class="ds-meta" data-reveal>
+  <div class="ds-meta-grid">
+    <div class="clean-meta-item">
+      <span class="meta-label">Role</span>
+      <span class="clean-meta-val">UI/UX Designer, UX Researcher</span>
+    </div>
+    <div class="clean-meta-item">
+      <span class="meta-label">Project Type</span>
+      <span class="clean-meta-val">0 → 1, Group Project</span>
+    </div>
+    <div class="clean-meta-item">
+      <span class="meta-label">Deliverables</span>
+      <span class="clean-meta-val">UX Research, Hardware Concept, UI, Prototyping</span>
+    </div>
+    <div class="clean-meta-item">
+      <span class="meta-label">Platform</span>
+      <span class="clean-meta-val">iOS, Android, Wearable</span>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="ds-intro" data-reveal>
+  <div>
+    <p class="ds-eyebrow">Overview</p>
+    <h2 class="ds-statement">Time slips away unseen. FLUX makes it <em>visible</em>.</h2>
+  </div>
+  <div class="ds-intro-copy">
+    <p>FLUX makes chronoception (the human sense of time) legible for the first time. By pairing a minimalist wristband with an intelligent app, we translate physiological data into a real-time cognitive state signal, bridging the gap between perceived time and objective reality.</p>
+  </div>
+</section>
+
+<!-- SCOPE OF WORK -->
+<section class="ds-scope">
+  <div class="ds-card ds-scope-card" data-reveal>
+    <div class="ds-scope-head">
+      <h2 class="ds-title">Scope of <em>work</em></h2>
+      <p>From first research to an interactive app prototype and a wristband hardware concept.</p>
+    </div>
+    <div class="ds-scope-grid" style="--cols:6;">
+      <div class="ds-phase" style="grid-column:1 / span 3; grid-row:1; --i:0;">UX research</div>
+      <div class="ds-phase" style="grid-column:2 / span 3; grid-row:2; --i:1;">Hardware concept</div>
+      <div class="ds-phase" style="grid-column:3 / span 3; grid-row:3; --i:2;">UI design</div>
+      <div class="ds-phase" style="grid-column:4 / span 3; grid-row:4; --i:3;">Prototyping</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="ds-problem" data-reveal>
+  <div class="ds-problem-inner">
+    <p class="ds-eyebrow">Problem statement</p>
+    <h2 class="ds-problem-text">We track our steps, sleep and screen time, but nothing tells us when we've <em>drifted</em> out of focus.</h2>
+    <div class="ds-problem-cols">
+      <div>
+        <h3>The problem</h3>
+        <p>Young professionals don't lose their days to laziness; they lose them to invisible mental drift and hours spent in the wrong cognitive state, with no signal that anything is wrong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH INSIGHTS -->
+<section class="ds-section" id="research">
+  <div class="ds-section-head" data-reveal>
+    <p class="ds-eyebrow">Research</p>
+    <h2 class="ds-title">What the research <em>showed</em></h2>
+    <p>Three data points framed the problem and who it hits hardest.</p>
+  </div>
+  <div class="ds-insights" data-reveal>
+    <article class="ds-card ds-insight" data-reveal-item>
+      <span class="ds-insight-no">Insight 01</span>
+      <h3>Distraction quietly eats the day</h3>
+      <div class="ds-insight-visual">
+        <div class="ds-bignum">1<small>hour</small></div>
+      </div>
+      <p class="ds-insight-cap">lost to distraction daily per US knowledge worker, the baseline cost this project set out to address.</p>
+    </article>
+    <article class="ds-card ds-insight" data-reveal-item>
+      <span class="ds-insight-no">Insight 02</span>
+      <h3>Focus doesn't snap back</h3>
+      <div class="ds-insight-visual">
+        <svg class="ds-ring" viewBox="0 0 150 150" role="img" aria-label="23 of 60 minutes">
+          <circle class="bg" cx="75" cy="75" r="54" />
+          <circle class="fg" cx="75" cy="75" r="54" />
+          <text x="75" y="80" text-anchor="middle">23</text>
+          <text class="unit" x="75" y="100" text-anchor="middle">min</text>
+        </svg>
+      </div>
+      <p class="ds-insight-cap">to regain focus after a single interruption, according to attention-research benchmarks.</p>
+    </article>
+    <article class="ds-card ds-insight" data-reveal-item>
+      <span class="ds-insight-no">Insight 03</span>
+      <h3>The sharpest edge is neurodivergent</h3>
+      <div class="ds-insight-visual">
+        <div class="ds-bars">
+          <div class="ds-bar-row">Adults with ADHD<div class="ds-bar" style="--w:51%;"><span>51%</span></div></div>
+          <div class="ds-bar-row">Neurotypical peers<div class="ds-bar ds-bar--ink" style="--w:25%;"><span>25%</span></div></div>
+        </div>
+      </div>
+      <p class="ds-insight-cap">of work time lost to distraction, nearly double for adults with ADHD.</p>
+    </article>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="ds-section" id="audience">
+  <div class="ds-section-head" data-reveal>
+    <p class="ds-eyebrow">Who it's for</p>
+    <h2 class="ds-title">Built for people who feel their focus <em>slipping</em></h2>
+  </div>
+  <div class="ds-people" data-reveal>
+    <article class="ds-card ds-person" data-reveal-item>
+      <div class="ds-person-top">
+        <span class="ds-person-figure">22–35</span>
+        <div>
+          <p class="ds-person-name">Young professionals</p>
+        </div>
+      </div>
+      <div class="ds-person-block">
+        <p>High-functioning, digitally native knowledge workers who feel their focus slipping but have no way to see where the time actually went.</p>
+      </div>
+    </article>
+    <article class="ds-card ds-person" data-reveal-item>
+      <div class="ds-person-top">
+        <span class="ds-person-figure">51%</span>
+        <div>
+          <p class="ds-person-name">The neurodivergent core</p>
+        </div>
+      </div>
+      <div class="ds-person-block">
+        <p>Adults with ADHD lose 51% of their work time to distraction, nearly double the 25% lost by neurotypical peers. That is the sharpest edge of the problem FLUX was built to address.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="ds-section" id="solution">
+  <div class="ds-section-head" data-reveal>
+    <p class="ds-eyebrow">Solution</p>
+    <h2 class="ds-title">Detect. Alert. <em>Align.</em></h2>
+  </div>
+  <div class="ds-steps" data-reveal>
+    <article class="ds-step" data-reveal-item>
+      <span class="ds-step-no">01</span>
+      <h3>Detect</h3>
+      <p>Track nervous system patterns to identify Flow, Drift, or Stress states in real time.</p>
+    </article>
+    <article class="ds-step" data-reveal-item>
+      <span class="ds-step-no">02</span>
+      <h3>Alert</h3>
+      <p>Gentle tactile and LED nudges when your state misaligns with your intention.</p>
+    </article>
+    <article class="ds-step" data-reveal-item>
+      <span class="ds-step-no">03</span>
+      <h3>Align</h3>
+      <p>Review weekly insights to actively rebuild your chronoception over time.</p>
+    </article>
+  </div>
+</section>
+
+<!-- HARDWARE -->
+<section class="ds-section" id="hardware">
+  <div class="ds-split" data-reveal>
+    <div class="ds-split-copy">
+      <p class="ds-eyebrow">The hardware</p>
+      <h2 class="ds-title">A minimalist sensor <em>layer</em></h2>
+      <p>HR, temperature, and moisture sensors classify your cognitive state in real time, with an LED that glows orange in Flow, blue when drifting, and off when the battery's low.</p>
+      <div class="ds-chips">
+        <span class="ds-chip">Heart rate</span>
+        <span class="ds-chip">Temperature</span>
+        <span class="ds-chip">Moisture</span>
+      </div>
+      <div class="ds-legend">
+        <span><i style="background:var(--blue);"></i>Flow</span>
+        <span><i style="background:var(--muted-2);"></i>Drifting</span>
+        <span><i style="background:var(--ink);"></i>Low battery</span>
+      </div>
+    </div>
+    <div class="ds-card ds-split-media">
+      <img src="images/flux-hardware-diagram.png" alt="Wristband hardware diagram: sensors and controls" />
+    </div>
+  </div>
+</section>
+
+<!-- PROTOTYPE SHOWCASE -->
+<section class="ds-section" id="prototype">
+  <div class="ds-section-head" data-reveal>
+    <p class="ds-eyebrow">Prototype</p>
+    <h2 class="ds-title">Three moments in the <em>flow</em></h2>
+  </div>
+  <div class="ds-stage ds-card" data-stage data-ar="782 / 1544" data-reveal>
+    <i hidden data-item data-kind="video" data-src="images/flux-flow-enter.mp4" data-title="Enter Flow" data-text="You want to work but aren't yet focused. Tap to begin. FLUX prompts your intention and enables Do Not Disturb across selected apps."></i>
+    <i hidden data-item data-kind="video" data-src="images/flux-flow-exit.mp4" data-title="Exit Flow" data-text="After extended deep focus, fatigue signals emerge. Confirm you want to step out, and FLUX acknowledges it."></i>
+    <i hidden data-item data-kind="video" data-src="images/flux-flow-insight.mp4" data-title="Weekly Insight" data-text="A summary of your flow states across the week, with one actionable tip to protect, extend, or recover your best hours."></i>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section class="ds-section" id="next">
+  <div class="ds-section-head" data-reveal>
+    <p class="ds-eyebrow">What's next</p>
+    <h2 class="ds-title">Where FLUX goes <em>from here</em></h2>
+  </div>
+  <div class="ds-list" data-reveal>
+    <div class="ds-list-item" data-reveal-item>
+      <span class="ds-list-num">01</span>
+      <p class="ds-list-lead">Clinical validation</p>
+      <p class="ds-list-desc">Partner with sleep and attention researchers to benchmark the sensor model against clinical-grade EEG baselines.</p>
+    </div>
+    <div class="ds-list-item" data-reveal-item>
+      <span class="ds-list-num">02</span>
+      <p class="ds-list-lead">Adaptive interventions</p>
+      <p class="ds-list-desc">Learn each person's individual flow and drift rhythm so FLUX can anticipate a state shift instead of just reacting to it.</p>
+    </div>
+    <div class="ds-list-item" data-reveal-item>
+      <span class="ds-list-num">03</span>
+      <p class="ds-list-lead">Team-level insights</p>
+      <p class="ds-list-desc">Aggregate anonymized flow data across a team to surface systemic scheduling problems, not just individual habits.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT NAV -->
+<div class="project-nav ds-closing">
+  <a href="case-study-hydrated-cat.html" class="proj-nav-link">
+    <span>← Previous</span>
+    <span class="nav-proj-title">Hydrated Cat</span>
+  </a>
+  <a href="index.html#about" class="proj-nav-link right">
+    <span>Next to Other Works →</span>
+    <span class="nav-proj-title">Other Works</span>
+  </a>
+</div>
+
+<footer>
+  <p>© 2026 Alina Xie</p>
+  <p>Product Designer in Bay Area</p>
+</footer>
+
+<script src="js/case-study.js"></script>
+<script src="js/cursor.js"></script>
+<script src="js/fit-headings.js"></script>
+</body>
+</html>

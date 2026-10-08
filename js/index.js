@@ -1,12 +1,3 @@
-const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-});
 const heroRotator = document.getElementById('heroRotator');
 if (heroRotator) {
   const rotatorSleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -34,6 +25,88 @@ if (heroRotator) {
   runRotator();
 }
 
+// Hero chat bubble over the character: pops out of the head, writes the greeting
+// letter by letter, bobs in pixel steps, drifts toward the cursor and nods now and then.
+const heroBubble = document.getElementById('heroBubble');
+const heroStage = document.querySelector('.hero-stage');
+if (heroBubble && heroStage) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const caret = heroBubble.querySelector('.bubble-caret');
+  const nodder = heroBubble.querySelector('.hero-bubble-nod');
+  const nameLink = heroBubble.querySelector('.name-accent');
+  const letters = [];
+
+  heroBubble.querySelectorAll('[data-type]').forEach((node) => {
+    const text = node.textContent;
+    node.textContent = '';
+    [...text].forEach((ch) => {
+      const span = document.createElement('span');
+      span.className = 'bch';
+      span.setAttribute('aria-hidden', 'true');
+      span.textContent = ch;
+      node.appendChild(span);
+      letters.push(span);
+    });
+  });
+
+  function nod() {
+    if (reduceMotion) return;
+    nodder.classList.remove('nod');
+    void nodder.offsetWidth;
+    nodder.classList.add('nod');
+    setTimeout(() => nodder.classList.remove('nod'), 480);
+  }
+
+  if (reduceMotion) {
+    letters.forEach((s) => s.classList.add('on'));
+    caret.classList.add('done');
+  } else {
+    letters.forEach((s, i) => setTimeout(() => s.classList.add('on'), 900 + i * 75));
+    setTimeout(() => {
+      caret.classList.add('done');
+      nod();
+      setInterval(nod, 7000);
+    }, 900 + letters.length * 75 + 1200);
+
+    // The bubble leans toward the pointer, snapped to a 4px pixel grid
+    const snap = (v) => Math.round(v / 4) * 4;
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+    document.getElementById('home').addEventListener('mousemove', (e) => {
+      const r = heroStage.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+      heroBubble.style.setProperty('--bx', snap(clamp(dx * 40, -12, 12)) + 'px');
+      heroBubble.style.setProperty('--by', snap(clamp(dy * 24, -8, 0)) + 'px');
+    });
+    document.getElementById('home').addEventListener('mouseleave', () => {
+      heroBubble.style.setProperty('--bx', '0px');
+      heroBubble.style.setProperty('--by', '0px');
+    });
+    if (nameLink) nameLink.addEventListener('mouseenter', nod);
+  }
+}
+
+// The tagline keeps a fixed footprint: reserve room for the longest word up front
+const rotatorWrap = document.querySelector('.v2-rotator-wrap');
+if (rotatorWrap && heroRotator) {
+  function reserveRotatorWidth() {
+    const probe = heroRotator.cloneNode();
+    probe.removeAttribute('id');
+    probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;';
+    rotatorWrap.appendChild(probe);
+    const fontSize = parseFloat(getComputedStyle(probe).fontSize);
+    let widest = 0;
+    ['work well', 'feel better'].forEach((word) => {
+      probe.textContent = word;
+      widest = Math.max(widest, probe.getBoundingClientRect().width);
+    });
+    probe.remove();
+    rotatorWrap.style.setProperty('--rw', (widest / fontSize + 1.1).toFixed(3));
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(reserveRotatorWidth);
+  reserveRotatorWidth();
+}
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
@@ -43,7 +116,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 document.querySelectorAll('[data-observe]').forEach(el => observer.observe(el));
 
-// Terminal window toggle — pops up centered, dismissed via icon, backdrop, or Escape.
+// Terminal window toggle - pops up centered, dismissed via icon, backdrop, or Escape.
 // Each open plays the session like a real terminal: command types out character by
 // character, Enter fires, output appears, then the next command begins.
 const terminal = document.getElementById('v2Terminal');
@@ -62,7 +135,7 @@ if (terminal && terminalToggle && terminalBackdrop && terminalBody) {
     {
       prompt: 'MacBook-Pro:About_Me alinaxie$ ',
       command: [{ text: 'whoami', cls: 'v2-term-highlight' }],
-      output: ['> alina_xie — explorer'],
+      output: ['> alina_xie | explorer'],
       strongOutput: true,
       blankAfter: true,
     },
@@ -174,38 +247,13 @@ if (terminal && terminalToggle && terminalBackdrop && terminalBody) {
   });
 }
 
-// Hero background interaction — adapted from sky-stars-interactive.html
+// Hero background interaction - adapted from sky-stars-interactive.html
 // Listeners live on the whole hero section (not just the sky layer) so the
 // effect tracks the mouse everywhere, and stars render in front of the card.
 const heroSection = document.getElementById('home');
 const sky = document.getElementById('v2Sky');
-const constellationLayer = document.getElementById('v2ConstellationLayer');
-if (heroSection && sky && constellationLayer) {
-  const constellations = [
-    `+------+\n|  ✦   |\n+------*`,
-    `    .---*\n   /     \\\n  ✦       ✧`,
-    `+---.\n     \\---✦\n          \\---*`,
-    `  ✦---✧\n  |   |\n  *---*`
-  ];
-
-  const constPositions = [
-    { left: '10%', top: '18%' },
-    { left: '70%', top: '12%' },
-    { left: '30%', top: '68%' },
-    { left: '82%', top: '55%' }
-  ];
-
-  constPositions.forEach((pos, index) => {
-    const item = document.createElement('div');
-    item.className = 'v2-constellation';
-    item.innerText = constellations[index % constellations.length];
-    item.style.left = pos.left;
-    item.style.top = pos.top;
-    item.style.animationDelay = `${index * 1.5}s`;
-    constellationLayer.appendChild(item);
-  });
-
-  const skyColors = ['#2d3748', '#4a5568', '#2b58d5', '#d69e2e', '#805ad5', '#e53e3e'];
+if (heroSection && sky) {
+  const skyColors = ['#111111', '#4a5568', '#2b58d5', '#8a8f98', '#1b3c9e', '#7c9cff'];
   const starChars = ['*', '+', '.', '✦', '✧'];
   const trailChars = ['*', '=', '-', '~', '.', '°', '✦'];
 
@@ -274,11 +322,22 @@ if (heroSection && sky && constellationLayer) {
   });
 }
 
-// "My Other Works" carousel — scroll-snap track synced with dot pagination
+// "My Other Works" carousel: scroll-snap track synced with dot pagination.
+// It advances on its own, and the centred slide's video preview plays by itself.
+let syncCarouselVideos = () => {};
 const moreWorkTrack = document.getElementById('moreWorkTrack');
 const moreWorkDots = document.querySelectorAll('.more-work-dot');
 if (moreWorkTrack && moreWorkDots.length) {
   const slides = [...moreWorkTrack.querySelectorAll('.more-work-slide')];
+  const carousel = moreWorkTrack.closest('.more-work-carousel') || moreWorkTrack;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let inView = false;
+  let lastPointerMove = 0;
+  let holdUntil = 0;
+  let autoTimer;
+
+  const lightboxOpen = () => !!document.querySelector('.video-lightbox.open, .project-lightbox.open');
+  const activeIndex = () => Math.max(0, slides.findIndex((s) => s.classList.contains('active')));
 
   function updateActiveDot() {
     const trackRect = moreWorkTrack.getBoundingClientRect();
@@ -296,6 +355,45 @@ if (moreWorkTrack && moreWorkDots.length) {
     });
     moreWorkDots.forEach((dot, i) => dot.classList.toggle('active', i === closestIndex));
     slides.forEach((slide, i) => slide.classList.toggle('active', i === closestIndex));
+    syncCarouselVideos();
+    schedule();
+  }
+
+  // Only the centred slide's video plays, and only while the carousel is on screen
+  syncCarouselVideos = function () {
+    if (lightboxOpen()) return;
+    slides.forEach((slide) => {
+      const video = slide.querySelector('video.more-work-video');
+      if (!video) return;
+      if (inView && !document.hidden && slide.classList.contains('active')) video.play().catch(() => {});
+      else if (!video.paused) video.pause();
+    });
+  };
+
+  // Scrolls the track itself, so the page never jumps
+  function goTo(i) {
+    const t = moreWorkTrack.getBoundingClientRect();
+    const s = slides[i].getBoundingClientRect();
+    moreWorkTrack.scrollTo({
+      left: moreWorkTrack.scrollLeft + (s.left + s.width / 2) - (t.left + t.width / 2),
+      behavior: 'smooth',
+    });
+  }
+
+  function schedule() {
+    clearTimeout(autoTimer);
+    if (reduceMotion) return;
+    const hasVideo = !!slides[activeIndex()].querySelector('video');
+    autoTimer = setTimeout(advance, hasVideo ? 5000 : 2500);
+  }
+
+  function advance() {
+    if (!inView || Date.now() - lastPointerMove < 2000 || document.hidden || lightboxOpen() || Date.now() < holdUntil) {
+      schedule();
+      return;
+    }
+    goTo((activeIndex() + 1) % slides.length);
+    autoTimer = setTimeout(schedule, 1500);
   }
 
   let scrollTimeout;
@@ -306,39 +404,142 @@ if (moreWorkTrack && moreWorkDots.length) {
 
   moreWorkDots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
-      slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      holdUntil = Date.now() + 7000;
+      goTo(i);
     });
   });
+
+  // Hands-on use pauses the auto-advance for a few seconds
+  ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach((type) => {
+    moreWorkTrack.addEventListener(type, () => { holdUntil = Date.now() + 7000; }, { passive: true });
+  });
+  // Pointing at a slide (moving the mouse over the track) also holds it still
+  moreWorkTrack.addEventListener('mousemove', () => { lastPointerMove = Date.now(); }, { passive: true });
+  document.addEventListener('visibilitychange', syncCarouselVideos);
+
+  new IntersectionObserver((entries) => {
+    inView = entries[0].isIntersecting;
+    syncCarouselVideos();
+    schedule();
+  }, { threshold: 0.4 }).observe(carousel);
 
   updateActiveDot();
 }
 
-// Signature reveal — click to grow an ASCII zodiac garden (+ - = only),
-// adapted from emmiwu.com/voter-guide's ASCII flower-garden footer, then write the name
+// Signature reveal: LEGO models snap together out of 3D bricks once the section
+// scrolls into view, then the name is written with a burst of cubes.
 const signatureStage = document.getElementById('signatureStage');
 const signatureSky = document.getElementById('signatureSky');
-const signatureHint = document.getElementById('signatureHint');
 const signatureEmail = document.getElementById('signatureEmail');
 const signatureResume = document.getElementById('signatureResume');
-const zodiacPlants = [...document.querySelectorAll('.zodiac-plant')];
-if (signatureStage && signatureSky && signatureHint && signatureEmail && signatureResume) {
+const voxelPlants = [...document.querySelectorAll('.voxel-plant')];
+if (signatureStage && signatureSky && signatureEmail && signatureResume) {
   const signatureLetters = [...document.querySelectorAll('.signature-letter')];
-  const sparkColors = ['#2d3748', '#4a5568', '#2b58d5', '#d69e2e', '#805ad5', '#e53e3e'];
-  const sparkChars = ['+', '-', '='];
+  const sparkColors = ['#2b58d5', '#1b3c9e', '#7c9cff', '#c7d6ff'];
+  const cubeFaces = '<i class="vface f"></i><i class="vface r"></i><i class="vface t"></i>';
   let signatureStarted = false;
 
+  // LEGO models, drawn as pixel grids (. empty, B blue, D deep blue, L light blue, P pale blue).
+  // Every filled cell becomes a brick; bricks with nothing on top get a round stud.
+  const BRICK_COLORS = { B: 'var(--blue)', D: '#1b3c9e', L: '#7c9cff', P: '#c7d6ff' };
+  const studs = '<i class="vstud k0"></i><i class="vstud k1"></i><i class="vstud k2"></i>';
+  const LEGO_MODELS = {
+    cat: { depth: 2, rows: [
+      'B.......B',
+      'BB.....BB',
+      'BBBBBBBBB',
+      'BBDBBBDBB',
+      'BBBBLBBBB',
+      '.BBBDBBB.',
+      '..BBBBB..',
+    ] },
+    mug: { depth: 2, rows: [
+      '.LLLLLL..',
+      '.BBBBBBBB',
+      '.BBBBBB.B',
+      '.BBBBBB.B',
+      '.BBBBBBBB',
+      '.BBBBBB..',
+      '.DDDDDD..',
+    ] },
+    monitor: { depth: 2, rows: [
+      'BBBBBBBBB',
+      'BLLLLLLLB',
+      'BLPPLLLLB',
+      'BLLLLLPLB',
+      'BLLLLLLLB',
+      'BBBBBBBBB',
+      '....D....',
+      '..DDDDD..',
+    ] },
+    mouse: { depth: 2, rows: [
+      '...D...',
+      '...D...',
+      '.BBDBB.',
+      'BBBDBBB',
+      'BBBLBBB',
+      'BBBBBBB',
+      'BBBBBBB',
+      'BBBBBBB',
+      '.BBBBB.',
+    ] },
+  };
+
+  voxelPlants.forEach((plant) => {
+    const model = LEGO_MODELS[plant.dataset.model];
+    if (!model) return;
+    const { rows, depth } = model;
+    const cols = Math.max(...rows.map((r) => r.length));
+    plant.style.setProperty('--rows', rows.length);
+    plant.style.setProperty('--cols', cols);
+    plant.style.setProperty('--depth', depth);
+
+    // z = 0 is the front layer; extra layers sit behind it
+    const cells = new Map();
+    rows.forEach((row, y) => {
+      [...row].forEach((ch, x) => {
+        if (!BRICK_COLORS[ch]) return;
+        for (let z = 0; z < depth; z++) cells.set(`${x},${y},${z}`, ch);
+      });
+    });
+    const has = (x, y, z) => cells.has(`${x},${y},${z}`);
+
+    const scene = document.createElement('div');
+    scene.className = 'voxel-scene';
+    cells.forEach((ch, key) => {
+      const [x, y, z] = key.split(',').map(Number);
+      const topFree = !has(x, y - 1, z);
+      let faces = '';
+      if (!has(x, y, z - 1)) faces += '<i class="vface f"></i>';
+      if (!has(x + 1, y, z)) faces += '<i class="vface r"></i>';
+      if (topFree) faces += '<i class="vface t"></i>' + studs;
+      if (!faces) return;
+      const brick = document.createElement('i');
+      brick.className = 'vcube';
+      const delay = (rows.length - 1 - y) * 85 + z * 30 + Math.round(Math.random() * 90);
+      brick.style.cssText = `--x:${x};--y:${y};--z:${z};--c:${BRICK_COLORS[ch]};--d:${delay}`;
+      brick.innerHTML = faces;
+      scene.appendChild(brick);
+    });
+    const shadow = document.createElement('div');
+    shadow.className = 'vshadow';
+    scene.appendChild(shadow);
+    plant.appendChild(scene);
+  });
+
   function spawnSparkBurst(x, y) {
-    const count = 4;
+    const count = 5;
     for (let i = 0; i < count; i++) {
       const spark = document.createElement('div');
-      spark.className = 'v2-star-node v2-twinkle';
-      spark.innerText = sparkChars[Math.floor(Math.random() * sparkChars.length)];
+      spark.className = 'vspark';
       const angle = Math.random() * Math.PI * 2;
-      const dist = 16 + Math.random() * 34;
+      const dist = 18 + Math.random() * 38;
+      const size = 8 + Math.random() * 9;
+      const color = sparkColors[Math.floor(Math.random() * sparkColors.length)];
       spark.style.left = `${x + Math.cos(angle) * dist}px`;
       spark.style.top = `${y + Math.sin(angle) * dist}px`;
-      spark.style.fontSize = `${14 + Math.random() * 12}px`;
-      spark.style.color = sparkColors[Math.floor(Math.random() * sparkColors.length)];
+      spark.style.setProperty('--s', `${size.toFixed(1)}px`);
+      spark.innerHTML = `<div class="vspin" style="animation-duration:${(1.6 + Math.random() * 1.4).toFixed(2)}s"><div class="vcube-s" style="--c:${color}">${cubeFaces}</div></div>`;
       signatureSky.appendChild(spark);
       setTimeout(() => {
         spark.style.opacity = '0';
@@ -351,10 +552,9 @@ if (signatureStage && signatureSky && signatureHint && signatureEmail && signatu
   function playSignature() {
     if (signatureStarted) return;
     signatureStarted = true;
-    signatureHint.classList.add('hidden');
 
-    // Grow the ASCII zodiac garden, staggered like planting one at a time
-    const shuffled = [...zodiacPlants].sort(() => Math.random() - 0.5);
+    // Grow the plants in a random order, one after another
+    const shuffled = [...voxelPlants].sort(() => Math.random() - 0.5);
     shuffled.forEach((plant, i) => {
       setTimeout(() => plant.classList.add('grown'), i * 110);
     });
@@ -371,7 +571,7 @@ if (signatureStage && signatureSky && signatureHint && signatureEmail && signatu
       }, i * 220);
     });
 
-    const gardenDuration = zodiacPlants.length * 110;
+    const gardenDuration = voxelPlants.length * 110;
     const nameDuration = signatureLetters.length * 220;
     setTimeout(() => {
       signatureEmail.classList.add('shown');
@@ -381,11 +581,19 @@ if (signatureStage && signatureSky && signatureHint && signatureEmail && signatu
     }, Math.max(gardenDuration, nameDuration) + 450);
   }
 
-  signatureStage.addEventListener('click', playSignature);
+  const signatureObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        playSignature();
+        signatureObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  signatureObserver.observe(signatureStage);
 }
 
-// Video preview lightbox — shared by the Motion and Back-End cards. Each
-// preview plays on hover and stops when the cursor leaves; clicking it
+// Video preview lightbox - shared by the Motion and Back-End cards. Each
+// preview plays by itself while its slide is centred; clicking it
 // expands the same blue-bordered browser-chrome window into the center of
 // the screen (minus the badge), with links out to the full case study or
 // site. Closed with a single click on the backdrop (or Escape).
@@ -411,6 +619,7 @@ if (videoLightbox && videoLightboxBackdrop) {
     activePreview.video.muted = true;
     activePreview.homeParent.insertBefore(activePreview.browser, activePreview.homeNextSibling);
     activePreview = null;
+    syncCarouselVideos();
   }
 
   videoPreviews.forEach(({ browserId, triggerId, videoId, links }) => {
@@ -421,16 +630,6 @@ if (videoLightbox && videoLightboxBackdrop) {
 
     const homeParent = browser.parentNode;
     const homeNextSibling = browser.nextSibling;
-
-    trigger.addEventListener('mouseenter', () => {
-      if (videoLightbox.classList.contains('open')) return;
-      video.play().catch(() => {});
-    });
-    trigger.addEventListener('mouseleave', () => {
-      if (videoLightbox.classList.contains('open')) return;
-      video.pause();
-      video.currentTime = 0;
-    });
 
     trigger.addEventListener('click', () => {
       videoLightbox.insertBefore(browser, videoLightboxCta);
@@ -462,7 +661,7 @@ if (videoLightbox && videoLightboxBackdrop) {
   });
 }
 
-// Project preview lightbox — Izakaya, Timeline, PawLand cards.
+// Project preview lightbox - Izakaya, Timeline, PawLand cards.
 // Click a card to open it centered with image, description, and links;
 // click the backdrop, the close button, or Escape to dismiss.
 const projectLightbox = document.getElementById('projectLightbox');
