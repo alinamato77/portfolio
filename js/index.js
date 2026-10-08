@@ -601,7 +601,7 @@ const videoLightbox = document.getElementById('videoLightbox');
 const videoLightboxBackdrop = document.getElementById('videoLightboxBackdrop');
 const videoLightboxCta = document.getElementById('videoLightboxCta');
 const videoPreviews = [
-  { browserId: 'moreWorkBrowser', triggerId: 'moreWorkVideoTrigger', videoId: 'moreWorkVideo', links: [{ href: 'projects/motion-design.php', label: 'View Case Study →' }] },
+  { browserId: 'moreWorkBrowser', triggerId: 'moreWorkVideoTrigger', videoId: 'moreWorkVideo', links: [{ href: 'projects/motion-design.html', label: 'View Case Study →' }] },
   { browserId: 'backEndBrowser', triggerId: 'backEndVideoTrigger', videoId: 'backEndVideo', links: [{ href: 'https://alinaxdesign.com/aau/ixd608/pawland/', label: 'Visit Site ↗' }, { href: 'https://github.com/alinamato77/ixd608.git', label: 'View on GitHub ↗' }] },
   { browserId: 'timelineBrowser', triggerId: 'timelineVideoTrigger', videoId: 'timelineVideo', links: [{ href: 'https://www.figma.com/proto/WK2PX9FOJQDuT2RUWDA7Mi/timeline-website---wireframe?node-id=2-2&viewport=92%2C716%2C0.21&t=THNyTqyjMlxsMztu-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2', label: 'View Prototype ↗' }] },
 ];
